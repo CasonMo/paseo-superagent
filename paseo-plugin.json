@@ -1,0 +1,18 @@
+{
+  "id": "superagent",
+  "requirements": {
+    "paseo": ">=0.15.3"
+  },
+  "name": "Superagent",
+  "description": "A resident super agent for Paseo: connect message sources, route events through a shared judge, manage tickets and execution agents, and bring approvals and results back to chat and WeCom.",
+  "translations": {
+    "zh-CN": {
+      "name": "Superagent",
+      "description": "Paseo 的常驻超级助理：接入消息源，用共享 judge 研判事件，管理工单与执行 Agent，并把审批和结果带回聊天和企业微信。"
+    }
+  },
+  "icon": "assets/icon.png",
+  "build": [
+    ["npm", "ci", "--omit=dev", "--ignore-scripts"]
+  ]
+}
