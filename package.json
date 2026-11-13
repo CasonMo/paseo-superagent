@@ -1,7 +1,7 @@
 {
   "name": "paseo-superagent",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A resident super agent for Paseo: connect message sources, route events through a shared judge, manage tickets and execution agents, and bring approvals and results back to chat and WeCom.",
   "repository": {
     "type": "git",
