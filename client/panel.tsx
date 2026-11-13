@@ -523,6 +523,8 @@ export function SuperagentScreen({ theme, layout, navigation, params }: PluginSc
         flexDirection: "row" as const,
         alignItems: "center" as const,
         justifyContent: "space-between" as const,
+        flexWrap: "wrap" as const,
+        rowGap: 8,
         gap: 12,
         paddingHorizontal: pad,
         paddingTop: layout.compact ? 10 : 16,
@@ -530,7 +532,13 @@ export function SuperagentScreen({ theme, layout, navigation, params }: PluginSc
         borderBottomWidth: 1,
         borderColor: theme.colors.border,
       },
-      brandRow: { flexDirection: "row" as const, alignItems: "center" as const, gap: 10, flex: 1 },
+      brandRow: {
+        flexDirection: "row" as const,
+        alignItems: "center" as const,
+        gap: 10,
+        flex: 1,
+        minWidth: 170,
+      },
       brandMark: {
         width: 34,
         height: 34,
@@ -538,13 +546,26 @@ export function SuperagentScreen({ theme, layout, navigation, params }: PluginSc
         alignItems: "center" as const,
         justifyContent: "center" as const,
         backgroundColor: "transparent",
+        flexShrink: 0,
       },
       brandMarkText: { color: theme.colors.accentForeground, fontSize: 16, fontWeight: "700" as const },
-      title: { color: theme.colors.foreground, fontSize: layout.compact ? 17 : 19, fontWeight: "600" as const },
+      title: {
+        color: theme.colors.foreground,
+        fontSize: layout.compact ? 17 : 19,
+        fontWeight: "600" as const,
+        flexShrink: 1,
+      },
       subtitleRow: { flexDirection: "row" as const, alignItems: "center" as const, gap: 5, marginTop: 1 },
-      dot: { width: 7, height: 7, borderRadius: 4 },
-      subtitle: { color: theme.colors.foregroundMuted, fontSize: 11 },
-      headerActions: { flexDirection: "row" as const, alignItems: "center" as const, gap: 6 },
+      dot: { width: 7, height: 7, borderRadius: 4, flexShrink: 0 },
+      subtitle: { color: theme.colors.foregroundMuted, fontSize: 11, flexShrink: 1 },
+      headerActions: {
+        flexDirection: "row" as const,
+        alignItems: "center" as const,
+        flexWrap: "wrap" as const,
+        justifyContent: "flex-end" as const,
+        gap: 6,
+        marginLeft: "auto" as const,
+      },
       messages: { flex: 1 },
       messagesContent: { padding: pad, gap: 10 },
       thread: { gap: 6, marginBottom: 6 },
@@ -1340,11 +1361,13 @@ export function SuperagentScreen({ theme, layout, navigation, params }: PluginSc
               <View style={styles.brandMark}>
                 <Icon icon={{ svg: SUPERAGENT_LOGO_SVG }} size={34} />
               </View>
-              <View style={{ flex: 1 }}>
-                <Text style={styles.title}>Superagent</Text>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text style={styles.title} numberOfLines={1}>
+                  Superagent
+                </Text>
                 <View style={styles.subtitleRow}>
                   <View style={[styles.dot, { backgroundColor: paused ? theme.colors.statusWarning : theme.colors.statusSuccess }]} />
-                  <Text style={styles.subtitle}>
+                  <Text style={styles.subtitle} numberOfLines={1}>
                     {mainAgentId
                       ? paused
                         ? "已暂停 · 仍可对话"
